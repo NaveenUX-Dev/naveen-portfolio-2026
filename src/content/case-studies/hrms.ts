@@ -1,7 +1,7 @@
 import type { CaseStudy } from "@/types/case-study"
 
 /**
- * Source of truth: `Md Files/HRMS_CASE_STUDY_MASTER.md`.
+ * Source of truth: the HRMS case-study master document.
  *
  * Every claim here is drawn from that document. Nothing quantitative appears
  * until it is verified — see §40 of the master file. Items still awaiting
