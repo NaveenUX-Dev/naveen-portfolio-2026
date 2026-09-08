@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@import "../styles/tokens.css";
+@import "../styles/light.css";
+@import "../styles/dark.css";
+@import "../styles/utilities.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Expose tokens as Tailwind utilities. Tailwind's default spacing scale is
+   replaced entirely so every utility resolves to an 8px multiple. */
+@theme inline {
+  --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-sunken: var(--surface-sunken);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+
+  --color-accent-olive: var(--accent-olive);
+  --color-accent-olive-strong: var(--accent-olive-strong);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-amber: var(--accent-amber);
+  --color-accent-peach: var(--accent-peach);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --font-serif: var(--font-editorial), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-neutral), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-standard: var(--ease-standard);
+  --ease-emphasized: var(--ease-emphasized);
+}
+
+/* 8px spacing scale. `--spacing` drives Tailwind's numeric utilities, so
+   p-1 = 8px, p-2 = 16px, gap-3 = 24px … no arbitrary values needed. */
+@theme {
+  --spacing: 8px;
+  --breakpoint-xs: 22.5rem;
+  --tracking-eyebrow: 0.18em;
+  --leading-display: 1.08;
+  --leading-title: 1.1;
+}
+
+@layer base {
+  * {
+    border-color: var(--border-subtle);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  h1, h2, h3, p, li, dt, dd, a {
+    overflow-wrap: break-word;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--accent-amber) 40%, transparent);
+    color: var(--text-primary);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

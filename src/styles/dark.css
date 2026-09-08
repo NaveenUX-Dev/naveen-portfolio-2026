@@ -1,0 +1,36 @@
+/* Quiet Future — evening, blue hour, warm city light. Never pure black. */
+
+.dark {
+  --background: #121311;
+  --background-alt: #161815;
+  --foreground: #f3efe7;
+
+  --surface: #191b18;
+  --surface-elevated: #20231f;
+  --surface-sunken: #0f100e;
+
+  --text-primary: #f3efe7;
+  --text-secondary: #b8b5ae;
+  --text-muted: #878a84;
+  --text-inverse: #161815;
+
+  --border-subtle: #30342e;
+  --border-strong: #454a41;
+
+  --accent-olive: #93a07e;
+  --accent-olive-strong: #a8b593;
+  --accent-blue: #8ea7be;
+  --accent-amber: #d7a35d;
+  --accent-peach: #c98f73;
+
+  --glass-fill: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+
+  --focus-ring: #a8b593;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.32);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.32), 0 24px 48px rgba(0, 0, 0, 0.4);
+
+  color-scheme: dark;
+}

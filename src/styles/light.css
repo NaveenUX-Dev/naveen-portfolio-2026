@@ -1,0 +1,32 @@
+/* Optimistic Daylight — warm ivory, paper beige, soft charcoal. */
+
+:root {
+  --background: #f4f0e8;
+  --background-alt: #efeae0;
+  --foreground: #1b1c19;
+
+  --surface: #faf7f1;
+  --surface-elevated: #ffffff;
+  --surface-sunken: #ebe6dc;
+
+  --text-primary: #1b1c19;
+  --text-secondary: #63665f;
+  --text-muted: #888b84;
+  --text-inverse: #f7f4ee;
+
+  --border-subtle: rgba(27, 28, 25, 0.1);
+  --border-strong: rgba(27, 28, 25, 0.18);
+
+  --accent-olive: #747d65;
+  --accent-olive-strong: #5c644e;
+  --accent-blue: #94aabe;
+  --accent-amber: #d8a263;
+  --accent-peach: #c98f73;
+
+  --glass-fill: rgba(255, 255, 255, 0.58);
+  --glass-border: rgba(255, 255, 255, 0.72);
+
+  --focus-ring: #5c644e;
+
+  color-scheme: light;
+}
