@@ -1,4 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "trailingSlash": true
+  "trailingSlash": true,
+  "rewrites": [
+    {
+      "source": "/google7deee7c562411902.html",
+      "destination": "/google7deee7c562411902/"
+    }
+  ]
 }

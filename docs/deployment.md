@@ -23,7 +23,7 @@ redirected.
 
 ## Environment variables
 
-Current production: **`SITE_URL=https://naveenkumar-designs.vercel.app`** (chosen 2026-10-08). Google Search Console verifies it with the file `public/google7deee7c562411902.html`; do not delete that file.
+Current production: **`SITE_URL=https://naveenkumar-designs.vercel.app`** (chosen 2026-10-08). Google Search Console verifies it with the file `public/google7deee7c562411902.html`; do not delete that file. Vercel serves `.html` files from `public/` at a clean URL (`/google7deee7c562411902/`), so `vercel.json` rewrites the exact `.html` path Google checks to it.
 
 | Name | Required | Value |
 |---|---|---|
