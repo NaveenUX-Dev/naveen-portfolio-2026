@@ -2,19 +2,19 @@
 
 import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
-import { useReadingMode } from "@/features/case-study/components/reading-mode"
-import type { CaseStudyChapter } from "@/types/case-study"
+
+export interface ChapterLink {
+  id: string
+  index: string
+  label: string
+}
 
 /**
  * Sticky chapter rail (master §1). Native anchors — no scroll hijacking, and
  * back/forward keep working. Hidden below `xl`, where a compact progress bar
  * takes over.
  */
-export function ChapterNav({ chapters }: { chapters: CaseStudyChapter[] }) {
-  const mode = useReadingMode()
-  const visible = chapters.filter(
-    (chapter) => mode === "deep" || chapter.depth === "brief",
-  )
+export function ChapterNav({ chapters: visible }: { chapters: ChapterLink[] }) {
   const activeId = useActiveChapter(visible.map((chapter) => chapter.id))
 
   return (
@@ -50,11 +50,11 @@ export function ChapterNav({ chapters }: { chapters: CaseStudyChapter[] }) {
 }
 
 /** Compact progress readout for viewports without room for the rail. */
-export function ChapterProgress({ chapters }: { chapters: CaseStudyChapter[] }) {
-  const mode = useReadingMode()
-  const visible = chapters.filter(
-    (chapter) => mode === "deep" || chapter.depth === "brief",
-  )
+export function ChapterProgress({
+  chapters: visible,
+}: {
+  chapters: ChapterLink[]
+}) {
   const activeId = useActiveChapter(visible.map((chapter) => chapter.id))
   const position = visible.findIndex((chapter) => chapter.id === activeId)
   const active = position >= 0 ? visible[position] : visible[0]

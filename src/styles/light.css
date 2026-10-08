@@ -28,5 +28,12 @@
 
   --focus-ring: #5c644e;
 
+  /* Home hero: dawn. Sky warms toward the horizon; stars read as dust. */
+  --hero-sky-horizon: #f2e1c6;
+  --hero-glow: rgba(216, 162, 99, 0.42);
+  --hero-star: rgba(27, 28, 25, 0.3);
+  --hero-star-bright: rgba(116, 125, 101, 0.75);
+  --hero-orbit: rgba(27, 28, 25, 0.16);
+
   color-scheme: light;
 }

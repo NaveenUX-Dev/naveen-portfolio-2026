@@ -52,13 +52,20 @@ function RowContent({
         )}
       >
         {project.coverImage ? (
-          <Image
-            src={project.coverImage}
-            alt=""
-            fill
-            sizes="(min-width: 1024px) 58vw, 100vw"
-            className="object-cover transition-emphasized group-hover:scale-[1.02]"
-          />
+          <>
+            <Image
+              src={project.coverImage}
+              alt={project.coverAlt ?? ""}
+              fill
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              className="object-cover transition-emphasized group-hover:scale-[1.02]"
+            />
+            {project.coverLabel ? (
+              <span className="absolute bottom-1 left-1 rounded-full bg-background/85 px-1 py-0.5 text-xs text-text-primary backdrop-blur-sm">
+                {project.coverLabel}
+              </span>
+            ) : null}
+          </>
         ) : (
           <p className="absolute inset-0 flex items-center p-3 font-serif text-xl leading-snug text-text-primary sm:p-4 sm:text-2xl">
             <span className="max-w-[20ch]">{project.statement}</span>

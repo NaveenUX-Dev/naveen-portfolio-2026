@@ -1,16 +1,10 @@
-"use client"
-
 import type { ReactNode } from "react"
 import { cn } from "@/lib/utils"
-import { useReadingMode } from "@/features/case-study/components/reading-mode"
-import type { ReadingDepth } from "@/types/case-study"
 
 interface ChapterProps {
   id: string
   index: string
   label: string
-  /** `deep` chapters are omitted while the reader is in Brief mode. */
-  depth?: ReadingDepth
   heading?: string
   /** Sits directly under the heading, at reading measure. */
   standfirst?: string
@@ -20,23 +14,18 @@ interface ChapterProps {
 
 /**
  * One chapter of a case study: an anchor target, a numbered rule, an optional
- * heading, and the content. Generic — Medical Guardian, Dopamint and PWD use
+ * heading, and the content. Generic — Dopamint, Megathil and HRMS use
  * the same component (master §44).
  */
 export function Chapter({
   id,
   index,
   label,
-  depth = "brief",
   heading,
   standfirst,
   children,
   className,
 }: ChapterProps) {
-  const mode = useReadingMode()
-
-  if (depth === "deep" && mode === "brief") return null
-
   return (
     <section
       id={id}
@@ -51,11 +40,6 @@ export function Chapter({
         >
           {label}
         </span>
-        {depth === "deep" ? (
-          <span className="rounded-full border border-border-subtle px-1 text-xs text-text-muted">
-            Deep dive
-          </span>
-        ) : null}
       </div>
 
       {heading ? (

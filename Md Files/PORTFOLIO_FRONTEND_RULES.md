@@ -192,9 +192,8 @@ portfolio/
 │   ├── content/
 │   │   └── projects/
 │   │       ├── dopamint.mdx
-│   │       ├── medical-guardian.mdx
-│   │       ├── hrms.mdx
-│   │       └── pwd-oms.mdx
+│   │       ├── megathil.mdx
+│   │       └── hrms.mdx
 │   │
 │   ├── hooks/
 │   │
@@ -295,7 +294,7 @@ Bad:
 ```text
 dopamint-button.tsx
 portfolio-green-card.tsx
-medical-guardian-dialog.tsx
+megathil-dialog.tsx
 ```
 
 Good:
@@ -806,9 +805,8 @@ Primary work currently includes:
 
 ```text
 Dopamint
-Medical Guardian
+Megathil
 HRMS Platform
-PWD / OMS
 ```
 
 Project order and visibility may change later.

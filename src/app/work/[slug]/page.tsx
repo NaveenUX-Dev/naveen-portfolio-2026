@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { CaseStudyPage } from "@/features/case-study/components/case-study-page"
+import { StoryCaseStudyPage } from "@/features/case-study/components/story-case-study-page"
 import { caseStudies } from "@/content/case-studies"
-import { projects } from "@/config/projects"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -20,17 +19,17 @@ export async function generateMetadata({
 
   if (!study) return {}
 
-  const project = projects.find((item) => item.slug === slug)
+  const { title, description } = study.metadata
 
   return {
-    title: study.title,
-    description: project?.description ?? study.standfirst,
+    title,
+    description,
     alternates: { canonical: `/work/${slug}` },
     openGraph: {
       type: "article",
       url: `/work/${slug}`,
-      title: study.title,
-      description: project?.description ?? study.standfirst,
+      title,
+      description,
     },
   }
 }
@@ -41,5 +40,5 @@ export default async function WorkCaseStudyPage({ params }: PageProps) {
 
   if (!study) notFound()
 
-  return <CaseStudyPage study={study} />
+  return <StoryCaseStudyPage study={study} />
 }
