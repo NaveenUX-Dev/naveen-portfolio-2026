@@ -27,18 +27,36 @@ export const hrmsCaseStudy: StoryCaseStudy = {
   },
 
   facts: [
-    { label: "Role", value: "Product Designer" },
-    { label: "Ownership", value: "End-to-end product design" },
-    { label: "Product", value: "B2B HRMS / Payroll SaaS" },
+    { label: "Product", value: "Shenll HRMS, a B2B HRMS / payroll SaaS" },
     { label: "Primary users", value: "HR teams, administrators, employees" },
+    { label: "My role", value: "Product Designer, end-to-end product design" },
+    { label: "Company", value: "Shenll Technology Solutions" },
+    {
+      label: "Stage",
+      value: "In production; 100+ customers, including manufacturing and education",
+    },
     {
       label: "Focus",
       value:
         "Employee lifecycle, attendance, leave, payroll, recruitment, performance and self-service",
     },
     {
-      label: "Customers",
-      value: "100+, including manufacturing and education",
+      label: "Main problem",
+      value:
+        "Every HR function worked, but each introduced its own rules, dependencies and exceptions, and users had to interpret that complexity themselves.",
+      wide: true,
+    },
+    {
+      label: "Key contributions",
+      value:
+        "A state-driven employee lifecycle, information architecture built around jobs, progressive onboarding, payroll that explains outcomes instead of exposing calculations, and a centralised design system.",
+      wide: true,
+    },
+    {
+      label: "Outcomes and limits",
+      value:
+        "Clearer lifecycle workflows, less friction in onboarding and self-service, and more consistent patterns across modules. Measured figures are not published here. The AI-assisted HR operations in section 20 are proposals, not shipped features.",
+      wide: true,
     },
   ],
 

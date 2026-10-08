@@ -11,7 +11,7 @@
 
   --text-primary: #1b1c19;
   --text-secondary: #63665f;
-  --text-muted: #888b84;
+  --text-muted: #686b64; /* 4.77:1 on background, 5.07:1 on surface (WCAG AA) */
   --text-inverse: #f7f4ee;
 
   --border-subtle: rgba(27, 28, 25, 0.1);

@@ -13,7 +13,11 @@ import type { NavItem } from "@/types/global"
  * footer comes into view.
  */
 function useActiveHref(pathname: string) {
-  const base = pathname.startsWith("/work") ? "/#work" : "/"
+  const base = pathname.startsWith("/work")
+    ? "/#work"
+    : pathname.startsWith("/about")
+      ? "/about"
+      : "/"
   const [active, setActive] = useState(base)
 
   useEffect(() => {
@@ -64,7 +68,7 @@ export function SiteNav({ items }: { items: NavItem[] }) {
           const isActive = !item.external && item.href === active
 
           return (
-            <li key={item.href}>
+            <li key={item.href} className={item.hideOnMobile ? "hidden sm:block" : undefined}>
               <Link
                 href={item.href}
                 target={item.external ? "_blank" : undefined}

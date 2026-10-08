@@ -24,19 +24,42 @@ export const dopamintCaseStudy: StoryCaseStudy = {
       value: "AI-assisted crypto research and financial actions",
     },
     {
+      label: "Intended users",
+      value:
+        "People researching crypto and acting on their wallets through an AI chat, with different levels of crypto knowledge",
+    },
+    {
       label: "My contribution",
       value:
         "Product flows, interaction design, design-system application, frontend prototyping, and integration planning",
     },
     { label: "Collaboration", value: "Backend and LLM teams" },
     {
+      label: "Project stage",
+      value:
+        "Product in development; this case study presents selected design decisions and implementation direction",
+    },
+    {
       label: "Scope of this case study",
       value: "Onboarding, wallet context, swap review, and deposit recovery",
     },
     {
-      label: "Project stage",
+      label: "Main problem",
       value:
-        "Product in development; this case study presents selected design decisions and implementation direction",
+        "A question and a financial transaction look alike in a chat. People need to understand what will happen before an AI-initiated action moves money.",
+      wide: true,
+    },
+    {
+      label: "Key contributions",
+      value:
+        "A familiar sign-in path to wallet access, a swap review that separates the AI's suggestion from the user's authorisation, and a recovery flow for insufficient funds.",
+      wide: true,
+    },
+    {
+      label: "Outcomes and limits",
+      value:
+        "A documented interaction model and an evaluation plan. The product is in development, so there are no verified launch metrics or usability-study results.",
+      wide: true,
     },
   ],
 

@@ -6,9 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "deploy": "next build && firebase deploy --only hosting"
+    "deploy": "next build && npx --yes firebase-tools deploy --only hosting"
   },
   "dependencies": {
     "next": "16.3.4",

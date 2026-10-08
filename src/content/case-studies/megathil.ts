@@ -29,11 +29,30 @@ export const megathilCaseStudy: StoryCaseStudy = {
       label: "Platforms",
       value: "Mobile app + web, supported by an Admin Panel and LMS Admin",
     },
+    { label: "Stage", value: "Taken from concept to MVP; live at megathil.com" },
     { label: "AI scope", value: "Primarily the learner-facing mobile experience" },
-    { label: "Delivery", value: "End-to-end product development by Shenll" },
+    {
+      label: "Team delivery",
+      value:
+        "End-to-end product development by Shenll; development, testing and deployment by the wider team",
+    },
     {
       label: "My contribution",
-      value: "Product / UX, UI & design system, AI & backend collaboration",
+      value:
+        "Product / UX, UI & design system, and AI & backend collaboration, across all four products",
+      wide: true,
+    },
+    {
+      label: "Main problem",
+      value:
+        "Students have access to learning content but struggle to turn it into measurable career readiness.",
+      wide: true,
+    },
+    {
+      label: "Outcomes and limits",
+      value:
+        "Verified usage and outcome metrics are not available, so none are published.",
+      wide: true,
     },
   ],
 

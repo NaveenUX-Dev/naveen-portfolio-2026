@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/layout/site-footer"
 import { SiteHeader } from "@/components/layout/site-header"
 import { ThemeProvider } from "@/features/theme/components/theme-provider"
 import { siteConfig } from "@/config/site"
+import { isIndexable, siteUrl } from "@/config/site-url"
 import "./globals.css"
 
 const editorial = Fraunces({
@@ -21,25 +22,21 @@ const neutral = Inter({
 const fontVariables = [editorial.variable, neutral.variable].join(" ")
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${siteConfig.name} — ${siteConfig.role}`,
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.summary,
-  alternates: { canonical: "/" },
+  // Each page sets its own canonical, Open Graph and Twitter metadata. Only
+  // Vercel preview builds are noindexed; production never is (site-url.ts).
+  robots: isIndexable ? undefined : { index: false, follow: false },
   openGraph: {
-    type: "website",
-    url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — ${siteConfig.role}`,
-    description: siteConfig.summary,
+    locale: "en_US",
+    type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: `${siteConfig.name} — ${siteConfig.role}`,
-    description: siteConfig.summary,
-  },
+  twitter: { card: "summary_large_image" },
 }
 
 export default function RootLayout({

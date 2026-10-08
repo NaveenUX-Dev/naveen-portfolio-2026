@@ -10,7 +10,8 @@ export interface StoryCaseStudy {
   intro: string[]
   /** The framing design question, set under the introduction. */
   question?: { label: string; text: string }
-  facts: { label: string; value: string }[]
+  /** The opening "at a glance" summary. `wide` rows span the full grid. */
+  facts: { label: string; value: string; wide?: boolean }[]
   /** Headline decisions, each linking to the section that explains it. */
   keyDecisions: { heading: string; items: { text: string; target: string }[] }
   /** Rail entries. Each group wraps one or more sections. */

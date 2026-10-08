@@ -1,7 +1,11 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { JsonLd } from "@/components/common/json-ld"
 import { StoryCaseStudyPage } from "@/features/case-study/components/story-case-study-page"
 import { caseStudies } from "@/content/case-studies"
+import { projects } from "@/config/projects"
+import { pageMetadata } from "@/lib/page-metadata"
+import { caseStudyGraph } from "@/lib/structured-data"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -19,19 +23,13 @@ export async function generateMetadata({
 
   if (!study) return {}
 
-  const { title, description } = study.metadata
-
-  return {
-    title,
-    description,
-    alternates: { canonical: `/work/${slug}` },
-    openGraph: {
-      type: "article",
-      url: `/work/${slug}`,
-      title,
-      description,
-    },
-  }
+  return pageMetadata({
+    title: study.metadata.title,
+    description: study.metadata.description,
+    path: `/work/${slug}/`,
+    type: "article",
+    image: `work-${slug}.png`,
+  })
 }
 
 export default async function WorkCaseStudyPage({ params }: PageProps) {
@@ -40,5 +38,12 @@ export default async function WorkCaseStudyPage({ params }: PageProps) {
 
   if (!study) notFound()
 
-  return <StoryCaseStudyPage study={study} />
+  const cover = projects.find((project) => project.slug === slug)?.coverImage
+
+  return (
+    <>
+      <JsonLd data={caseStudyGraph(study, cover)} />
+      <StoryCaseStudyPage study={study} />
+    </>
+  )
 }

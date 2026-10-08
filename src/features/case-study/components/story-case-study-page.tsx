@@ -9,6 +9,7 @@ import {
   type ChapterLink,
 } from "@/features/case-study/components/chapter-nav"
 import { StoryBlockView } from "@/features/case-study/components/story-block"
+import { cn } from "@/lib/utils"
 import type { StoryCaseStudy, StorySection } from "@/types/story-case-study"
 
 /**
@@ -179,13 +180,22 @@ function StoryHero({ study }: { study: StoryCaseStudy }) {
         </Callout>
       ) : null}
 
-      <dl className="grid grid-cols-1 gap-x-6 gap-y-3 border-t border-border-subtle pt-4 sm:grid-cols-2 lg:grid-cols-3">
+      <dl
+        aria-label="At a glance"
+        className="grid grid-cols-1 gap-x-6 gap-y-3 border-t border-border-subtle pt-4 sm:grid-cols-2 lg:grid-cols-3"
+      >
         {study.facts.map((fact) => (
-          <div key={fact.label} className="flex flex-col gap-0.5">
+          <div
+            key={fact.label}
+            className={cn(
+              "flex flex-col gap-0.5",
+              fact.wide && "max-w-[68ch] sm:col-span-2 lg:col-span-3",
+            )}
+          >
             <dt className="text-xs uppercase tracking-eyebrow text-text-muted">
               {fact.label}
             </dt>
-            <dd className="text-sm text-text-primary">{fact.value}</dd>
+            <dd className="text-sm leading-relaxed text-text-primary">{fact.value}</dd>
           </div>
         ))}
       </dl>

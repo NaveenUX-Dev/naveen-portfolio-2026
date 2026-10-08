@@ -38,13 +38,8 @@ gutters from `container-page` (24 / 40 / 64px).
 | `lg` | 1024px |
 | `xl` | 1280px |
 
-## Before shipping
+## Deploying
 
-- `src/config/site.ts` — `heroStats` values are taken from the mockup and are
-  **not verified**. Replace them with real figures or delete the array.
-- `src/config/site.ts` — `url`, `email` and `socialLinks` hrefs are
-  placeholders.
-- `src/config/navigation.ts` — `/work`, `/about`, `/contact`, `/resume` routes
-  do not exist yet; the landing page links to them.
-- `public/images/projects/` — drop real covers in and set `coverImage` on each
-  project in `src/config/projects.ts` to replace the CSS placeholder frames.
+See [docs/deployment.md](docs/deployment.md): Vercel launch steps, the
+`SITE_URL` environment variable, preview indexing controls, the Firebase
+migration plan, and search-console setup.

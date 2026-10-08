@@ -2,15 +2,19 @@
 
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-import { useEffect, useState } from "react"
+import { useSyncExternalStore } from "react"
+
+const subscribe = () => () => {}
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  // Theme is unknown until hydration; render a stable placeholder first so
-  // server and client markup match.
-  useEffect(() => setMounted(true), [])
+  // Theme is unknown until hydration: the server snapshot is `false`, the
+  // client's is `true`, so server and first client render match.
+  const mounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  )
 
   const isDark = resolvedTheme === "dark"
 

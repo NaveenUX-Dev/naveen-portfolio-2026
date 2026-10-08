@@ -5,7 +5,6 @@ export const siteConfig = {
   name: "Naveen Kumar",
   shortName: "Naveen",
   role: "Product Designer",
-  url: "https://naveen2026-portfolio.web.app",
   email: "snaveenkumar.design@gmail.com",
 
   /** The home hero: a greeting, one headline, one supporting line. */
