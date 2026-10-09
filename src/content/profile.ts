@@ -126,7 +126,7 @@ export const profile = {
       answer:
         "Through the build, not just at handoff: discussing interaction behaviour, validation, permissions, loading and failure states, and trade-offs when the ideal UX costs more to implement.",
       evidence: [
-        { label: "Shenll HRMS: working with engineering", href: "/work/hrms#engineering" },
+        { label: "Shenll HRMS: research, iteration & delivery", href: "/work/hrms#process" },
         { label: "Dopamint: connecting design to implementation", href: "/work/dopamint#implementation" },
       ],
     },

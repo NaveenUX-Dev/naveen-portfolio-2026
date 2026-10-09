@@ -3,7 +3,8 @@ import { cn } from "@/lib/utils"
 
 interface ChapterProps {
   id: string
-  index: string
+  /** Optional section number shown before the label. */
+  index?: string
   label: string
   heading?: string
   /** Sits directly under the heading, at reading measure. */
@@ -33,7 +34,9 @@ export function Chapter({
       className={cn("scroll-mt-12 border-t border-border-subtle pt-4", className)}
     >
       <div className="flex items-center gap-2">
-        <span className="text-xs tabular-nums text-text-primary">{index}</span>
+        {index ? (
+          <span className="text-xs tabular-nums text-text-primary">{index}</span>
+        ) : null}
         <span
           id={`${id}-label`}
           className="text-xs uppercase tracking-eyebrow text-text-muted"

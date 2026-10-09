@@ -30,7 +30,8 @@ export interface StoryGroup {
 
 export interface StorySection {
   id: string
-  index: string
+  /** Optional: a case study may number its sections or leave that to the rail. */
+  index?: string
   label: string
   heading: string
   /** Decisions are the case study's centrepiece and get their own frame. */

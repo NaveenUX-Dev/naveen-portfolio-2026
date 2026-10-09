@@ -1,14 +1,25 @@
 import type { StoryCaseStudy } from "@/types/story-case-study"
 
 /**
- * Source of truth: Naveen's Shenll HRMS case-study narrative (October 2026).
+ * Source of truth: Naveen's Shenll HRMS case-study narrative (October 2026),
+ * plus his description of the per-module process (2026-10-09).
  *
- * Author instructions in that draft ([IMAGE] notes, "what I would show"
+ * Author instructions in the narrative ([IMAGE] notes, "what I would show"
  * advice, headline options) are not page copy and are left out. Claims
- * confirmed by Naveen on 2026-10-07: 100+ customers; usability testing took
- * place; measured improvements exist (figures not yet supplied, so none are
- * stated). The employee-creation iteration in "After testing" comes from the
- * earlier Shenll_HRMS_2024_Traditional_UX_Case_Study.md.
+ * confirmed by Naveen on 2026-10-07: 100+ customers; measured improvements
+ * exist (figures not supplied, so none are stated).
+ *
+ * The "Research, iteration & delivery" section follows the process Naveen
+ * described: interviews with the primary HR user, problem definition and
+ * competitor review, sketches and wireframes, prototype walkthroughs and
+ * feedback discussions with HR and engineering, then handoff; and, after
+ * HRMS 2.0, live prototypes and frontend UI modules that engineering refines
+ * and integrates. These sessions are not described as formal usability
+ * tests, and no participant counts, quotes or competitor names are given.
+ * The employee-creation iteration comes from the earlier
+ * Shenll_HRMS_2024_Traditional_UX_Case_Study.md.
+ *
+ * Sections are unnumbered; the chapter rail numbers the seven chapters.
  */
 export const hrmsCaseStudy: StoryCaseStudy = {
   slug: "hrms",
@@ -55,7 +66,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
     {
       label: "Outcomes and limits",
       value:
-        "Clearer lifecycle workflows, less friction in onboarding and self-service, and more consistent patterns across modules. Measured figures are not published here. The AI-assisted HR operations in section 20 are proposals, not shipped features.",
+        "Clearer lifecycle workflows, less friction in onboarding and self-service, and more consistent patterns across modules. Measured figures are not published here. The AI-assisted HR operations under “What I would improve today” are proposals, not shipped features.",
       wide: true,
     },
   ],
@@ -86,7 +97,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
       sections: [
         {
           id: "situation",
-          index: "01",
           label: "The situation",
           heading: "HR software looks straightforward from the outside.",
           blocks: [
@@ -145,7 +155,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
         },
         {
           id: "system-problem",
-          index: "02",
           label: "A system problem",
           heading:
             "What looked like a UI problem was actually a system problem.",
@@ -189,13 +198,246 @@ export const hrmsCaseStudy: StoryCaseStudy = {
       ],
     },
     {
+      id: "research",
+      index: "02",
+      label: "Research & delivery",
+      sections: [
+        {
+          id: "process",
+          label: "Research, iteration & delivery",
+          heading:
+            "Every module went through the same loop, rarely in a straight line.",
+          blocks: [
+            {
+              type: "prose",
+              paragraphs: [
+                "Each HRMS module went through the same five stages. The order below is the intent; in practice, feedback often sent a module back to an earlier stage before anything was handed off.",
+              ],
+            },
+            {
+              type: "flow",
+              label: "The loop behind each module",
+              caption:
+                "Handoff came only after the reviewed flow had been refined and finalised.",
+              steps: [
+                { text: "Understand the HR task" },
+                { text: "Define the problem and compare approaches" },
+                { text: "Explore the workflow" },
+                {
+                  text: "Review and refine with HR and engineering",
+                  branch: {
+                    when: "When feedback changes the design",
+                    path: ["Revisit the flow, wireframes or UI"],
+                  },
+                },
+                { text: "Deliver the intended behaviour" },
+              ],
+            },
+            { type: "subheading", text: "1. Understand the HR task" },
+            {
+              type: "prose",
+              paragraphs: [
+                "The aim was to learn how the work actually happened before deciding what any screen should do. For each module I interviewed our primary HR user about the task, the problems they ran into, and what would make the work easier.",
+                "Because the product covered so many HR functions, I couldn't treat this as asking which features they wanted. The questions were closer to:",
+              ],
+            },
+            {
+              type: "list",
+              items: [
+                "What triggers this task?",
+                "Who performs it?",
+                "What information do they need?",
+                "Which other workflow depends on its completion?",
+                "What happens if it is delayed?",
+                "What exceptions occur?",
+                "Which decisions require HR judgment?",
+                "Which activities can safely be automated?",
+              ],
+            },
+            { type: "subheading", text: "2. Define the problem and compare approaches" },
+            {
+              type: "prose",
+              paragraphs: [
+                "Next I clarified the problem statement, so later decisions could be checked against the actual problem rather than against preference. I then reviewed comparable products and ran a competitor analysis to understand how similar problems had been addressed elsewhere.",
+                "Across workflows such as attendance, payroll and employee self-service, this helped identify recurring friction around visibility, dependencies and completion states.",
+              ],
+            },
+            {
+              type: "clusters",
+              caption: "Recurring friction, grouped by what it cost the user.",
+              groups: [
+                {
+                  name: "Visibility",
+                  items: [
+                    "Unclear processing state",
+                    "Unclear ownership",
+                    "Delayed updates",
+                  ],
+                },
+                {
+                  name: "Efficiency",
+                  items: [
+                    "Repeated manual actions",
+                    "Duplicated information",
+                    "Back-and-forth",
+                  ],
+                },
+                {
+                  name: "Confidence",
+                  items: [
+                    "Uncertainty about payroll impact",
+                    "Unclear balances",
+                    "Lack of status feedback",
+                  ],
+                },
+              ],
+            },
+            { type: "subheading", text: "3. Explore the workflow" },
+            // TODO(evidence): add an original wireframe here as a `figure`
+            // block (label it as an early wireframe) once Naveen uploads it.
+            {
+              type: "prose",
+              paragraphs: [
+                "Before any UI, I explored solutions through sketches and wireframes, while changing direction was still cheap. I then designed each module's complete flow: the happy path, the errors, and the uncommon scenarios, deciding how the interface should respond in each. The exceptions covered later in this case study are part of that work.",
+              ],
+            },
+            { type: "subheading", text: "4. Review and refine with HR and engineering" },
+            {
+              type: "prose",
+              paragraphs: [
+                "I turned each flow into a prototype and walked through it with our primary HR user, inviting them to explore it and judge whether it addressed their problem. Engineering took part in these prototype discussions, so feasibility questions came up while the design could still change. In the walkthroughs I watched for:",
+              ],
+            },
+            {
+              type: "list",
+              items: [
+                "Hesitation",
+                "Repeated backtracking",
+                "Misinterpreted labels",
+                "Uncertainty before actions",
+                "Errors",
+                "Unnecessary steps",
+              ],
+            },
+            {
+              type: "prose",
+              paragraphs: [
+                "I collected the feedback and revisited whatever it pointed to: sometimes the UI, sometimes the wireframes, sometimes the flow itself. One of these loops changed how employees are created:",
+              ],
+            },
+            // TODO(evidence): add the revised onboarding UI here as a
+            // `figure` block once Naveen uploads it.
+            {
+              type: "table",
+              caption: "How employee creation changed between versions",
+              columns: ["Stage", "Detail"],
+              rows: [
+                [
+                  "Version\u00a01",
+                  "Employee creation asked HR for too much information in one step.",
+                ],
+                [
+                  "Problem",
+                  "HR had to collect and enter details that the employee could provide directly.",
+                ],
+                [
+                  "Insight",
+                  "Core employee creation and full profile completion are different stages.",
+                ],
+                [
+                  "Change",
+                  "Create the record with essential data, then send a profile-completion link.",
+                ],
+                [
+                  "Version\u00a02",
+                  "Onboarding becomes a staged flow: profile completion, review, verification, active.",
+                ],
+              ],
+            },
+            {
+              type: "prose",
+              paragraphs: [
+                "That change became the progressive onboarding described in the onboarding chapter.",
+              ],
+            },
+            { type: "subheading", text: "5. Deliver the intended behaviour" },
+            {
+              type: "prose",
+              paragraphs: [
+                "After refinement and finalisation, I prepared the handoff. Its job was to carry the intended behaviour, not only the screens, and collaboration with engineering continued through the build. It covered:",
+              ],
+            },
+            {
+              type: "list",
+              items: [
+                "Interaction behavior",
+                "Component reuse",
+                "Responsiveness",
+                "Validation rules",
+                "Permissions",
+                "Loading states",
+                "Empty states",
+                "Failure states",
+                "Technical limitations",
+              ],
+            },
+            {
+              type: "prose",
+              paragraphs: [
+                "Sometimes the technically cleanest implementation wasn't the best user experience; sometimes the ideal UX cost significantly more to build. Those cases went through their own short loop: design intention, technical constraint, trade-off, adjusted solution, then QA. This is where product design becomes less about artifacts and more about decisions.",
+              ],
+            },
+            { type: "subheading", text: "How delivery evolved after HRMS 2.0" },
+            // TODO(evidence): add a recording or screenshot of a live,
+            // interactive prototype here as a `figure` block once uploaded.
+            {
+              type: "prose",
+              paragraphs: [
+                "After HRMS 2.0, the later stages of this process changed. I began using Figma Make, Claude Code and Antigravity to build live, dynamic, interactive prototypes, so reviews could happen on working behaviour rather than linked screens. I then delivered frontend UI modules to engineering, and engineering refined the code and completed the API integration.",
+              ],
+            },
+            {
+              type: "compare",
+              caption:
+                "How work reached engineering, before and after HRMS 2.0.",
+              sides: [
+                {
+                  label: "Through HRMS 2.0",
+                  steps: [
+                    "Prototype",
+                    "Feedback and refinement",
+                    "Finalised design handed off",
+                    "Engineering builds and integrates",
+                  ],
+                },
+                {
+                  label: "After HRMS 2.0",
+                  steps: [
+                    "Live, interactive prototype",
+                    "Feedback and refinement",
+                    "Frontend UI modules delivered",
+                    "Engineering refines the code and integrates the APIs",
+                  ],
+                },
+              ],
+            },
+            {
+              type: "prose",
+              paragraphs: [
+                "The prototypes were not production-ready on their own. What changed is what reached engineering: frontend modules to refine and connect to the APIs, instead of static designs to implement.",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
       id: "structure",
       index: "03",
       label: "Structure",
       sections: [
         {
           id: "states-not-pages",
-          index: "03",
           label: "My first major decision",
           heading: "Design around states instead of individual pages.",
           variant: "decision",
@@ -246,71 +488,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
           ],
         },
         {
-          id: "workflows",
-          index: "04",
-          label: "Understanding the workflows",
-          heading: "I focused on how work was actually being completed.",
-          blocks: [
-            {
-              type: "prose",
-              paragraphs: [
-                "Because the product covered multiple HR functions, I couldn't treat research as “ask users what features they want.” The questions were closer to:",
-              ],
-            },
-            {
-              type: "list",
-              items: [
-                "What triggers this task?",
-                "Who performs it?",
-                "What information do they need?",
-                "Which other workflow depends on its completion?",
-                "What happens if it is delayed?",
-                "What exceptions occur?",
-                "Which decisions require HR judgment?",
-                "Which activities can safely be automated?",
-              ],
-            },
-            {
-              type: "prose",
-              paragraphs: [
-                "Across workflows such as attendance, payroll and employee self-service, this helped identify recurring friction around visibility, dependencies and completion states.",
-              ],
-            },
-            {
-              type: "clusters",
-              caption: "Recurring friction, grouped by what it cost the user.",
-              groups: [
-                {
-                  name: "Visibility",
-                  items: [
-                    "Unclear processing state",
-                    "Unclear ownership",
-                    "Delayed updates",
-                  ],
-                },
-                {
-                  name: "Efficiency",
-                  items: [
-                    "Repeated manual actions",
-                    "Duplicated information",
-                    "Back-and-forth",
-                  ],
-                },
-                {
-                  name: "Confidence",
-                  items: [
-                    "Uncertainty about payroll impact",
-                    "Unclear balances",
-                    "Lack of status feedback",
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
           id: "modules",
-          index: "05",
           label: "Connected modules",
           heading: "The product wasn't one workflow.",
           blocks: [
@@ -347,7 +525,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
         },
         {
           id: "jobs-not-database",
-          index: "06",
           label: "My second major decision",
           heading:
             "Build the information architecture around jobs, not database structure.",
@@ -386,12 +563,11 @@ export const hrmsCaseStudy: StoryCaseStudy = {
     },
     {
       id: "onboarding",
-      index: "07",
+      index: "04",
       label: "Onboarding",
       sections: [
         {
           id: "employee-onboarding",
-          index: "07",
           label: "Employee onboarding",
           heading:
             "Onboarding became the clearest example of the system-thinking approach.",
@@ -435,7 +611,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
         },
         {
           id: "progressive",
-          index: "08",
           label: "Progressive onboarding",
           heading: "Delegation without losing governance.",
           blocks: [
@@ -479,12 +654,11 @@ export const hrmsCaseStudy: StoryCaseStudy = {
     },
     {
       id: "rules",
-      index: "09",
+      index: "05",
       label: "Payroll & rules",
       sections: [
         {
           id: "dependencies",
-          index: "09",
           label: "Attendance and payroll",
           heading: "Attendance data isn't valuable in isolation.",
           blocks: [
@@ -528,7 +702,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
         },
         {
           id: "outcomes-not-engine",
-          index: "10",
           label: "My third major decision",
           heading:
             "Expose the information users need, not the calculation engine.",
@@ -567,7 +740,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
         },
         {
           id: "exceptions",
-          index: "11",
           label: "Handling exceptions",
           heading:
             "Enterprise UX is often defined by how gracefully the product handles exceptions.",
@@ -625,7 +797,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
         },
         {
           id: "authority",
-          index: "12",
           label: "Levels of authority",
           heading: "Not every user should be able to perform every action.",
           blocks: [
@@ -680,13 +851,12 @@ export const hrmsCaseStudy: StoryCaseStudy = {
       ],
     },
     {
-      id: "delivery",
-      index: "13",
-      label: "Delivery",
+      id: "system",
+      index: "06",
+      label: "Design system",
       sections: [
         {
           id: "consistency",
-          index: "13",
           label: "Design system",
           heading: "Making a large product feel consistent.",
           blocks: [
@@ -760,7 +930,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
         },
         {
           id: "infrastructure",
-          index: "14",
           label: "Operational infrastructure",
           heading: "The design system as operational infrastructure.",
           blocks: [
@@ -774,55 +943,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
           ],
         },
         {
-          id: "engineering",
-          index: "15",
-          label: "Working with engineering",
-          heading: "I didn't treat handoff as the end of the design process.",
-          blocks: [
-            {
-              type: "prose",
-              paragraphs: [
-                "Many important product decisions became clearer during implementation. My collaboration with engineering included discussing:",
-              ],
-            },
-            {
-              type: "list",
-              items: [
-                "Interaction behavior",
-                "Component reuse",
-                "Responsiveness",
-                "Validation rules",
-                "Permissions",
-                "Loading states",
-                "Empty states",
-                "Failure states",
-                "Technical limitations",
-              ],
-            },
-            {
-              type: "prose",
-              paragraphs: [
-                "Sometimes the technically cleanest implementation wasn't the best user experience. Sometimes the ideal UX required significantly more implementation cost. So the process often became:",
-              ],
-            },
-            {
-              type: "flow",
-              label: "From intention to shipped behavior",
-              caption:
-                "This is where product design becomes less about artifacts and more about decisions.",
-              steps: [
-                { text: "Design intention" },
-                { text: "Technical constraint" },
-                { text: "Trade-off" },
-                { text: "Adjusted solution" },
-                { text: "QA" },
-              ],
-            },
-          ],
-        },
-        {
           id: "accessibility",
-          index: "16",
           label: "Accessibility",
           heading:
             "For a product used all day, accessibility also affects operational efficiency.",
@@ -857,76 +978,15 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             },
           ],
         },
-        {
-          id: "testing",
-          index: "17",
-          label: "After testing",
-          heading:
-            "A workflow isn't successful simply because users eventually complete it.",
-          blocks: [
-            {
-              type: "prose",
-              paragraphs: [
-                "Usability feedback exposed areas where users could technically complete tasks but required unnecessary interpretation. I looked for:",
-              ],
-            },
-            {
-              type: "list",
-              items: [
-                "Hesitation",
-                "Repeated backtracking",
-                "Misinterpreted labels",
-                "Uncertainty before actions",
-                "Errors",
-                "Unnecessary steps",
-              ],
-            },
-            {
-              type: "prose",
-              paragraphs: [
-                "This led to iterations across workflows including onboarding, attendance and payroll, and employee self-service. Some research and usability improvements contributed to stronger task completion across these workflows.",
-              ],
-            },
-            { type: "subheading", text: "One iteration: creating an employee" },
-            {
-              type: "table",
-              caption: "How employee creation changed between versions",
-              columns: ["Stage", "Detail"],
-              rows: [
-                [
-                  "Version\u00a01",
-                  "Employee creation asked HR for too much information in one step.",
-                ],
-                [
-                  "Problem",
-                  "HR had to collect and enter details that the employee could provide directly.",
-                ],
-                [
-                  "Insight",
-                  "Core employee creation and full profile completion are different stages.",
-                ],
-                [
-                  "Change",
-                  "Create the record with essential data, then send a profile-completion link.",
-                ],
-                [
-                  "Version\u00a02",
-                  "Onboarding becomes a staged flow: profile completion, review, verification, active.",
-                ],
-              ],
-            },
-          ],
-        },
       ],
     },
     {
       id: "outcome",
-      index: "18",
+      index: "07",
       label: "Outcome",
       sections: [
         {
           id: "outcomes",
-          index: "18",
           label: "Outcomes",
           heading: "What changed, for the product, the team and the business.",
           blocks: [
@@ -961,7 +1021,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
         },
         {
           id: "learned",
-          index: "19",
           label: "What I learned",
           heading:
             "The visible UI is often only the final expression of decisions underneath.",
@@ -990,7 +1049,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
         },
         {
           id: "today",
-          index: "20",
           label: "What I would improve today",
           heading: "Three directions I would push further.",
           blocks: [
@@ -1038,7 +1096,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
         },
         {
           id: "closing",
-          index: "21",
           label: "Closing",
           heading: "Deciding where the complexity should live.",
           blocks: [
