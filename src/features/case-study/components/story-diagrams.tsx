@@ -93,19 +93,31 @@ export function Cascade({ block }: { block: StoryCascade }) {
 
 export function StateMachine({ block }: { block: StoryStates }) {
   const last = block.states.length - 1
+  // One row fits on wide screens only up to six states; longer machines keep
+  // the vertical timeline at every width instead of overflowing the page.
+  const row = block.states.length <= 6
 
   return (
     <figure className="flex flex-col gap-3">
       <p className="text-sm text-text-secondary">{block.label}</p>
 
-      <ol className="flex flex-col gap-2 border-l border-border-strong pl-3 lg:flex-row lg:gap-1 lg:border-l-0 lg:pl-0">
+      <ol
+        className={cn(
+          "flex flex-col gap-2 border-l border-border-strong pl-3",
+          row && "lg:flex-row lg:gap-1 lg:border-l-0 lg:pl-0",
+        )}
+      >
         {block.states.map((state, index) => (
-          <li key={state.name} className="flex flex-col gap-1 lg:flex-1">
+          <li
+            key={state.name}
+            className={cn("flex min-w-0 flex-col gap-1", row && "lg:flex-1")}
+          >
             <div className="flex items-center gap-1">
               <span
                 className={cn(
                   node,
-                  "lg:flex-1",
+                  "min-w-0 wrap-break-word",
+                  row && "lg:flex-1",
                   index === last &&
                     "border-accent-olive-strong bg-accent-olive-strong text-text-inverse dark:text-background",
                 )}
@@ -115,7 +127,10 @@ export function StateMachine({ block }: { block: StoryStates }) {
               {index < last ? (
                 <ChevronRight
                   aria-hidden
-                  className="hidden size-2 shrink-0 text-text-muted lg:block"
+                  className={cn(
+                    "hidden size-2 shrink-0 text-text-muted",
+                    row && "lg:block",
+                  )}
                   strokeWidth={1.5}
                 />
               ) : null}

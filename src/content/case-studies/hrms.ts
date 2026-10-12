@@ -4,10 +4,10 @@ import type { StoryCaseStudy } from "@/types/story-case-study"
  * Source of truth: Naveen's Shenll HRMS case-study narrative (October 2026),
  * plus his description of the per-module process (2026-10-09).
  *
- * Author instructions in the narrative ([IMAGE] notes, "what I would show"
- * advice, headline options) are not page copy and are left out. Claims
- * confirmed by Naveen on 2026-10-07: 100+ customers; measured improvements
- * exist (figures not supplied, so none are stated).
+ * Updated October 2026 with enriched narrative, additional visuals covering
+ * the employee lifecycle state diagram, before/after onboarding comparison,
+ * product screens (employee directory, employee detail, payroll explanation),
+ * system dependency diagram, design system snapshot, and research insights.
  *
  * The "Research, iteration & delivery" section follows the process Naveen
  * described: interviews with the primary HR user, problem definition and
@@ -27,52 +27,48 @@ export const hrmsCaseStudy: StoryCaseStudy = {
   title: "Designing complexity out of everyday HR operations",
   subtitle: "Designing an HR platform around workflows, not screens.",
   intro: [
-    "Shenll HRMS started with a familiar enterprise-product challenge: every HR function worked, but each function introduced its own rules, dependencies and exceptions.",
-    "The design problem was not simply creating screens for payroll, attendance or onboarding. It was designing a system where employees, HR teams, approvals, attendance, leave, payroll, business rules and compliance all affect one another, without forcing users to understand that complexity.",
-    "I worked across the product lifecycle, from understanding workflows and structuring the product to interaction design, design systems, prototyping, developer collaboration and iteration after release.",
-    "The product eventually grew to serve 100+ customers, particularly across businesses such as manufacturing and education.",
+    "Shenll HRMS faced a classic enterprise challenge: every HR function worked in isolation, but the real complexity lived in the dependencies between them — attendance affecting leave balances, leave affecting payroll, onboarding status controlling access, and policy rules creating exceptions at every step.",
+    "The design problem was not creating better screens for payroll or attendance. It was creating a system that made status, ownership, and next actions visible so that HR teams and employees did not have to mentally reconstruct how the system worked.",
+    "I led end-to-end product design for the platform — owning the state model, progressive onboarding, information architecture, and design system — while collaborating closely with founders, product managers, and engineers from discovery through handoff and post-release iteration. The product is now in production and serves 100+ customers across manufacturing and education.",
   ],
   question: {
     label: "My design challenge",
-    text: "How might we make a complex HR operating system feel predictable to people who use it every day?",
+    text: "How might we make a complex HR operating system feel predictable to the people who use it every day?",
   },
 
   facts: [
-    { label: "Product", value: "Shenll HRMS, a B2B HRMS / payroll SaaS" },
+    { label: "Product", value: "Shenll HRMS — B2B HRMS & Payroll SaaS" },
     { label: "Primary users", value: "HR teams, administrators, employees" },
-    { label: "My role", value: "Product Designer, end-to-end product design" },
+    {
+      label: "My role",
+      value: "Product Designer (end-to-end ownership)",
+    },
     { label: "Company", value: "Shenll Technology Solutions" },
     {
       label: "Stage",
-      value: "In production; 100+ customers, including manufacturing and education",
+      value: "In production · 100+ customers",
     },
     {
-      label: "Focus",
+      label: "Focus areas",
       value:
-        "Employee lifecycle, attendance, leave, payroll, recruitment, performance and self-service",
-    },
-    {
-      label: "Main problem",
-      value:
-        "Every HR function worked, but each introduced its own rules, dependencies and exceptions, and users had to interpret that complexity themselves.",
-      wide: true,
+        "Employee lifecycle, attendance, leave, payroll, recruitment, performance, self-service",
     },
     {
       label: "Key contributions",
       value:
-        "A state-driven employee lifecycle, information architecture built around jobs, progressive onboarding, payroll that explains outcomes instead of exposing calculations, and a centralised design system.",
+        "State-driven employee lifecycle that made status and next actions explicit. Information architecture organized around jobs, not database structure. Progressive onboarding that shifted data collection from HR to the employee. Payroll experiences that explain outcomes instead of exposing calculation logic. Centralized design system that enforced consistency across modules.",
       wide: true,
     },
     {
-      label: "Outcomes and limits",
+      label: "Outcomes",
       value:
-        "Clearer lifecycle workflows, less friction in onboarding and self-service, and more consistent patterns across modules. Measured figures are not published here. The AI-assisted HR operations under “What I would improve today” are proposals, not shipped features.",
+        "The redesign delivered clearer lifecycle visibility, reduced friction in onboarding and self-service, and more consistent patterns across the product. These improvements supported the platform's growth to 100+ customers. Exact quantitative metrics are not published here.",
       wide: true,
     },
   ],
 
   keyDecisions: {
-    heading: "Three decisions shaped the product",
+    heading: "Three decisions that shaped the product",
     items: [
       {
         text: "Design around states instead of individual pages.",
@@ -165,7 +161,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
                 "One of my earliest realizations was that most HRMS friction wasn't caused by individual interfaces. It came from dependencies between workflows. An employee might ask:",
               ],
             },
-            { type: "quote", text: "“Why isn't my leave balance updated?”" },
+            { type: "quote", text: "\u201cWhy isn\u2019t my leave balance updated?\u201d" },
             {
               type: "prose",
               paragraphs: [
@@ -173,6 +169,17 @@ export const hrmsCaseStudy: StoryCaseStudy = {
                 "Similarly, HR might see an employee but not immediately understand whether that person had received the onboarding link, completed their profile, submitted details, been reviewed, or been activated.",
                 "The product therefore needed more than forms and tables. It needed a state model.",
               ],
+            },
+            {
+              type: "figure",
+              src: "/images/projects/hrms-system-dependencies.jpg",
+              width: 1600,
+              height: 900,
+              alt: "System dependency diagram showing how Attendance, Leave, and Overtime modules feed into Payroll Processing, which produces Employee Payslips and HR Reports. Employee Status gates all modules.",
+              label: "System diagram",
+              caption:
+                "Attendance, leave and overtime all resolve in payroll — and employee status gates everything.",
+              annotations: [],
             },
             {
               type: "states",
@@ -193,6 +200,17 @@ export const hrmsCaseStudy: StoryCaseStudy = {
               caption:
                 "That state then affects access to other parts of the platform.",
             },
+            {
+              type: "figure",
+              src: "/images/projects/hrms-lifecycle-states.jpg",
+              width: 1600,
+              height: 900,
+              alt: "Employee lifecycle state diagram showing the flow from Created through Invitation Sent, Profile Pending, Waiting for HR Review, Verified, to Active, with exceptions under each state and Active unlocking Portal Access, Attendance Tracking, and Payroll Eligibility.",
+              label: "State diagram",
+              caption:
+                "Each state carries clear ownership and possible exceptions. Reaching Active unlocks portal access, attendance tracking, and payroll eligibility.",
+              annotations: [],
+            },
           ],
         },
       ],
@@ -211,7 +229,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             {
               type: "prose",
               paragraphs: [
-                "Each HRMS module went through the same five stages. The order below is the intent; in practice, feedback often sent a module back to an earlier stage before anything was handed off.",
+                "I treated every module as a cycle of understanding the real work, defining the problem, exploring solutions, reviewing with users and engineering, and only then delivering.",
               ],
             },
             {
@@ -231,6 +249,64 @@ export const hrmsCaseStudy: StoryCaseStudy = {
                   },
                 },
                 { text: "Deliver the intended behaviour" },
+              ],
+            },
+            { type: "subheading", text: "Key research activities" },
+            {
+              type: "list",
+              items: [
+                "Interviews with the primary HR user focused on actual workflows rather than feature requests",
+                "Observation of hesitation, backtracking, and uncertainty during prototype walkthroughs",
+                "Competitor analysis focused on how other systems handled status, ownership, and exceptions",
+                "Continuous feedback loops with engineering on technical constraints",
+              ],
+            },
+            { type: "subheading", text: "Key insights that drove design decisions" },
+            {
+              type: "figure",
+              src: "/images/projects/hrms-research-insights.jpg",
+              width: 1600,
+              height: 900,
+              alt: "Four research insight cards: HR couldn't tell employee status leading to state-driven lifecycle; employees asked about leave balance updates leading to dependency visibility; too much info collected upfront leading to progressive onboarding; lack of processing state visibility leading to states-instead-of-pages model.",
+              label: "Research insights",
+              caption:
+                "Each insight directly led to a design decision that shaped the product.",
+              annotations: [],
+            },
+            {
+              type: "clusters",
+              caption: "Recurring friction, grouped by what it cost the user.",
+              groups: [
+                {
+                  name: "Visibility",
+                  items: [
+                    "HR couldn't tell whether an employee was waiting on profile completion, review, or activation",
+                    "Unclear processing state",
+                    "Unclear ownership",
+                  ],
+                },
+                {
+                  name: "Efficiency",
+                  items: [
+                    "Creating a new employee required collecting too much information in a single step",
+                    "Employees asked why leave balances didn't update after attendance changes",
+                    "Back-and-forth between HR and employees",
+                  ],
+                },
+                {
+                  name: "Confidence",
+                  items: [
+                    "Lack of visibility into processing state",
+                    "Unclear ownership of next actions",
+                    "Low confidence in payroll outcomes",
+                  ],
+                },
+              ],
+            },
+            {
+              type: "prose",
+              paragraphs: [
+                "These insights directly led to the shift from a record-based model to a state-driven model and the redesign of onboarding as a progressive flow.",
               ],
             },
             { type: "subheading", text: "1. Understand the HR task" },
@@ -262,39 +338,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
                 "Across workflows such as attendance, payroll and employee self-service, this helped identify recurring friction around visibility, dependencies and completion states.",
               ],
             },
-            {
-              type: "clusters",
-              caption: "Recurring friction, grouped by what it cost the user.",
-              groups: [
-                {
-                  name: "Visibility",
-                  items: [
-                    "Unclear processing state",
-                    "Unclear ownership",
-                    "Delayed updates",
-                  ],
-                },
-                {
-                  name: "Efficiency",
-                  items: [
-                    "Repeated manual actions",
-                    "Duplicated information",
-                    "Back-and-forth",
-                  ],
-                },
-                {
-                  name: "Confidence",
-                  items: [
-                    "Uncertainty about payroll impact",
-                    "Unclear balances",
-                    "Lack of status feedback",
-                  ],
-                },
-              ],
-            },
             { type: "subheading", text: "3. Explore the workflow" },
-            // TODO(evidence): add an original wireframe here as a `figure`
-            // block (label it as an early wireframe) once Naveen uploads it.
             {
               type: "prose",
               paragraphs: [
@@ -325,8 +369,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
                 "I collected the feedback and revisited whatever it pointed to: sometimes the UI, sometimes the wireframes, sometimes the flow itself. One of these loops changed how employees are created:",
               ],
             },
-            // TODO(evidence): add the revised onboarding UI here as a
-            // `figure` block once Naveen uploads it.
             {
               type: "table",
               caption: "How employee creation changed between versions",
@@ -388,8 +430,6 @@ export const hrmsCaseStudy: StoryCaseStudy = {
               ],
             },
             { type: "subheading", text: "How delivery evolved after HRMS 2.0" },
-            // TODO(evidence): add a recording or screenshot of a live,
-            // interactive prototype here as a `figure` block once uploaded.
             {
               type: "prose",
               paragraphs: [
@@ -445,17 +485,17 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             {
               type: "prose",
               paragraphs: [
-                "A traditional approach could have been an employee list, an employee form and an employee detail page. That works visually, but it doesn't solve the operational question HR actually has:",
+                "A traditional approach would have been an employee list, an employee form and an employee detail page. That works visually, but it doesn't solve the operational question HR actually has:",
               ],
             },
             {
               type: "quote",
-              text: "“Where is this employee in the onboarding process, and what needs to happen next?”",
+              text: "\u201cWhere is this employee in the process, and what needs to happen next?\u201d",
             },
             {
               type: "prose",
               paragraphs: [
-                "So I shifted the experience from a record-based model toward a state-driven workflow. Waiting for profile completion became different from waiting for review, and different again from an active employee.",
+                "I shifted the experience from a record-based model toward a state-driven workflow. Waiting for profile completion became different from waiting for review, and different again from an active employee.",
               ],
             },
             {
@@ -477,13 +517,35 @@ export const hrmsCaseStudy: StoryCaseStudy = {
                 },
               ],
             },
+            {
+              type: "figure",
+              src: "/images/projects/hrms-employee-directory.jpg",
+              width: 1600,
+              height: 900,
+              alt: "HRMS employee directory screen showing a data table with employee names, departments, roles, status badges (Active, Under Review, Profile Pending, Invitation Expired), and contextual Next Action buttons. Sidebar navigation shows People, Time and Attendance, Leave, Payroll, Hiring, Performance, Self Service.",
+              label: "Product screen · sample data",
+              caption:
+                "The employee directory with clear status badges and contextual next actions — HR can see where every employee stands at a glance.",
+              annotations: [],
+            },
             { type: "subheading", text: "Why this mattered" },
             {
               type: "prose",
               paragraphs: [
                 "This allowed the interface to communicate what has happened, what hasn't happened, who owns the next action, and whether HR needs to intervene, instead of requiring the HR administrator to interpret several pieces of information manually.",
-                "**Trade-off:** more states create more system complexity. So the challenge was ensuring that states were meaningful operationally, not simply technical backend statuses exposed to users.",
+                "**Trade-off:** more states create more system complexity. The design challenge was ensuring every state was operationally meaningful to users, not just a technical backend status.",
               ],
+            },
+            {
+              type: "figure",
+              src: "/images/projects/hrms-employee-detail.jpg",
+              width: 1600,
+              height: 900,
+              alt: "HRMS employee detail page for Priya Nair showing Profile Pending status with a Next Action button, a lifecycle progress tracker from Created to Active, Employment Details, Onboarding Progress at 3/7 sections, and Pending Items listing Bank details and ID proof.",
+              label: "Product screen · sample data",
+              caption:
+                "The employee detail page highlights current state, next action, onboarding progress and pending items — making status and ownership explicit.",
+              annotations: [],
             },
           ],
         },
@@ -533,8 +595,8 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             {
               type: "prose",
               paragraphs: [
-                "One of the risks in enterprise products is allowing backend structure to dictate navigation. A database might categorize objects one way; users think about their work differently.",
-                "So I structured the product around operational jobs rather than exposing technical system categories.",
+                "Enterprise products often let backend structure dictate navigation. Users, however, think in terms of the job they need to complete.",
+                "I organized the top-level navigation around operational jobs rather than exposing technical system categories.",
               ],
             },
             {
@@ -555,7 +617,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             {
               type: "callout",
               label: "The objective",
-              text: "A user should know where to go based on what they are trying to accomplish.",
+              text: "A user should know where to go based on what they are trying to accomplish, not on how the data is stored.",
             },
           ],
         },
@@ -572,6 +634,17 @@ export const hrmsCaseStudy: StoryCaseStudy = {
           heading:
             "Onboarding became the clearest example of the system-thinking approach.",
           blocks: [
+            {
+              type: "figure",
+              src: "/images/projects/hrms-onboarding-comparison.jpg",
+              width: 1600,
+              height: 900,
+              alt: "Before vs After comparison. Left: Everything up front — a long scrolling form where HR had to enter all employee information. Right: Progressive onboarding — Step 1 HR creates basic record, Step 2 System sends onboarding link, Step 3 Employee completes profile, Step 4 HR reviews and activates.",
+              label: "Before vs After",
+              caption:
+                "Shifting data collection from HR to the employee — from a monolithic form to a progressive, ownership-aware flow.",
+              annotations: [],
+            },
             {
               type: "swimlane",
               caption: "Who acts at each step of onboarding, in order.",
@@ -604,7 +677,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             {
               type: "prose",
               paragraphs: [
-                "HR should never need to ask “Did the employee complete this?” The system should answer that.",
+                "HR should never need to ask \u201cDid the employee complete this?\u201d The system should answer that.",
               ],
             },
           ],
@@ -617,7 +690,20 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             {
               type: "prose",
               paragraphs: [
-                "Another option would have been forcing HR to collect all employee information before creating the employee. I avoided that because it creates unnecessary administrative effort.",
+                "Instead of asking HR to collect everything upfront, the flow became:",
+              ],
+            },
+            {
+              type: "flow",
+              label: "Progressive onboarding flow",
+              caption:
+                "The person closest to the information provides it, while HR retains control through review.",
+              steps: [
+                { text: "HR creates the employee with essential data", actor: "HR" },
+                { text: "System sends onboarding link", actor: "System" },
+                { text: "Employee completes their profile", actor: "Employee" },
+                { text: "HR reviews and verifies", actor: "HR" },
+                { text: "Employee is activated", actor: "System" },
               ],
             },
             {
@@ -645,7 +731,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             {
               type: "prose",
               paragraphs: [
-                "This reduces duplicate data entry, incorrect information and HR administrative workload. But HR still retains control through review.",
+                "This reduced duplicate data entry, incorrect information and HR administrative workload. But HR still retains control through review.",
               ],
             },
           ],
@@ -681,7 +767,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             {
               type: "prose",
               paragraphs: [
-                "This also influenced employee-facing copy. Instead of showing an ambiguous “Remaining leave” number, we needed to communicate which kind of number it was.",
+                "This also influenced employee-facing copy. Instead of showing an ambiguous \u201cRemaining leave\u201d number, we needed to communicate which kind of number it was.",
               ],
             },
             {
@@ -711,12 +797,24 @@ export const hrmsCaseStudy: StoryCaseStudy = {
               type: "prose",
               paragraphs: [
                 "Payroll systems can become extremely complex. One approach would be exposing every internal calculation, but that transfers system complexity to users.",
+                "Rather than exposing the full calculation engine, the experience focused on explaining outcomes — why a number appeared on a payslip and what influenced it — so users could build confidence without needing to understand every rule.",
               ],
             },
             {
               type: "callout",
               label: "The principle",
               text: "Expose outcomes and explanations; hide unnecessary computation.",
+            },
+            {
+              type: "figure",
+              src: "/images/projects/hrms-payroll-explained.jpg",
+              width: 1600,
+              height: 900,
+              alt: "HRMS payslip screen for Rahul Sharma showing salary breakdown with Basic Salary, HRA, Special Allowance, deductions including Loss of Pay with tooltip explaining 2 days absent based on attendance records, Net Pay of 66,938 rupees, and a What Affected This Payslip panel showing Attendance, Leave, and Overtime factors.",
+              label: "Product screen · sample data",
+              caption:
+                "The payslip explains outcomes — why a number appeared and what influenced it — so employees build confidence without needing to understand every rule.",
+              annotations: [],
             },
             {
               type: "table",
@@ -833,7 +931,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             {
               type: "callout",
               label: "This required thinking about",
-              text: "Role × permission × action × data visibility, not simply screens.",
+              text: "Role \u00d7 permission \u00d7 action \u00d7 data visibility, not simply screens.",
             },
             {
               type: "matrix",
@@ -888,6 +986,17 @@ export const hrmsCaseStudy: StoryCaseStudy = {
               ],
             },
             {
+              type: "figure",
+              src: "/images/projects/hrms-design-system.jpg",
+              width: 1600,
+              height: 900,
+              alt: "HRMS Design System component library showing Status Badges (Active, Pending, Rejected, Processing, Inactive), Button variants (Primary Approve, Secondary Cancel, Destructive Deactivate, Disabled Submit), Form Input States (Default, Focus, Error, Disabled), Employee Cards with avatars and status, and Alert components (Success, Warning, Error, Info).",
+              label: "Design system snapshot",
+              caption:
+                "Key components from the design system — status badges, buttons, form states, cards and alerts — ensuring consistent treatment across all modules.",
+              annotations: [],
+            },
+            {
               type: "specimen",
               label:
                 "Illustrative specimen, rebuilt with this portfolio's tokens rather than the product's",
@@ -936,7 +1045,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             {
               type: "prose",
               paragraphs: [
-                "One of the outcomes from centralizing reusable components was improved consistency and smoother collaboration with development. Instead of repeatedly discussing “How should this dropdown behave?”, the team could work from shared interaction patterns.",
+                "One of the outcomes from centralizing reusable components was improved consistency and smoother collaboration with development. Instead of repeatedly discussing \u201cHow should this dropdown behave?\u201d, the team could work from shared interaction patterns.",
                 "This reduced repeated design-development decisions and made new modules easier to build consistently.",
               ],
             },
@@ -951,7 +1060,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             {
               type: "prose",
               paragraphs: [
-                "For enterprise products used repeatedly throughout the day, accessibility also affects operational efficiency. I considered:",
+                "For enterprise products used repeatedly throughout the day, accessibility also affects operational efficiency. Accessibility considerations (contrast, clear status communication, logical focus order, and understandable error states) were treated as part of the core experience rather than an afterthought. I considered:",
               ],
             },
             {
@@ -1029,6 +1138,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
               type: "prose",
               paragraphs: [
                 "The biggest learning from this product wasn't about HR software. It was about complex systems.",
+                "Complex enterprise products rarely fail because of individual screens. They fail when dependencies between workflows remain invisible. Designing for states, ownership, and recovery paths proved more valuable than polishing isolated interfaces.",
               ],
             },
             {
@@ -1073,6 +1183,7 @@ export const hrmsCaseStudy: StoryCaseStudy = {
             {
               type: "prose",
               paragraphs: [
+                "I would explore AI-assisted experiences that surface exceptions, suggest next actions, and explain outcomes in plain language — while keeping clear human control and auditability. These remain proposals and are not part of the shipped product.",
                 "AI could help with summarizing attendance anomalies, detecting payroll irregularities, extracting employee-document information, drafting HR communications, answering policy questions and recommending follow-up actions.",
                 "But I wouldn't automatically let AI execute high-impact HR or payroll actions. The interaction model would be:",
               ],

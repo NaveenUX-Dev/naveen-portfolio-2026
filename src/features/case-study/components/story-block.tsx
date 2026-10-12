@@ -77,7 +77,7 @@ export function StoryBlockView({ block }: { block: StoryBlock }) {
       )
     case "table":
       return (
-        <table className="w-full max-w-[68ch] border-collapse text-left text-sm">
+        <table className="w-full max-w-[68ch] border-collapse text-left text-sm wrap-anywhere">
           <caption className="sr-only">{block.caption}</caption>
           <thead>
             <tr className="border-b border-border-strong">

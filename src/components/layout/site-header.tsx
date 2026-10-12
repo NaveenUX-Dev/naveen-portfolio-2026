@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site"
 export function SiteHeader() {
   return (
     <header className="border-b border-border-subtle bg-background">
-      <ContentContainer className="relative flex h-8 items-center justify-between gap-1.5 sm:h-10">
+      <ContentContainer className="relative flex h-8 items-center justify-between gap-1 xs:gap-1.5 sm:h-10">
         <Link
           href="/"
           className="flex shrink-0 items-center gap-2 rounded-sm text-sm font-medium tracking-tight focus-ring"

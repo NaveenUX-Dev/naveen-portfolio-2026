@@ -147,7 +147,7 @@ export const profile = {
 
   email: "snaveenkumar.design@gmail.com",
   resumeUrl:
-    "https://docs.google.com/document/d/1stesH5dcl3F-kuM1nEeQeptB9mb_Qik5/edit",
+    "https://docs.google.com/document/d/1HdkTjvqhItL_8jukdFrL5I_nIWl_hGUX/edit",
   profiles: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/naveen-productdesign/" },
     { label: "Dribbble", url: "https://dribbble.com/Naveenkumar-designs" },

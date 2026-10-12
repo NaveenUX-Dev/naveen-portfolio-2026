@@ -75,7 +75,7 @@ export function SiteNav({ items }: { items: NavItem[] }) {
                 rel={item.external ? "noopener noreferrer" : undefined}
                 aria-current={isActive ? "location" : undefined}
                 className={cn(
-                  "relative flex flex-col items-center rounded-sm py-1 text-sm transition-standard focus-ring",
+                  "relative flex flex-col items-center rounded-sm py-1 text-xs transition-standard focus-ring xs:text-sm",
                   isActive
                     ? "font-medium text-text-primary"
                     : "text-text-secondary hover:text-text-primary",

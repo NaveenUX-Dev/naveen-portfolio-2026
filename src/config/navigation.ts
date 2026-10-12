@@ -6,7 +6,7 @@ export const mainNavigation: NavItem[] = [
   { label: "About", href: "/about" },
   {
     label: "Resume",
-    href: "https://docs.google.com/document/d/1stesH5dcl3F-kuM1nEeQeptB9mb_Qik5/edit",
+    href: "https://docs.google.com/document/d/1HdkTjvqhItL_8jukdFrL5I_nIWl_hGUX/edit",
     external: true,
   },
   { label: "Contact", href: "/#contact" },
